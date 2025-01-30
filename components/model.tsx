@@ -1,6 +1,6 @@
 "use client";
 
-import {  ContactShadows,  OrbitControls } from "@react-three/drei";
+import {  ContactShadows } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import { Plant } from "./test-two";
@@ -20,7 +20,7 @@ export function Pot() {
 function Scene() {
   return (
     <group>
-      <OrbitControls />
+      {/* <OrbitControls /> */}
       {/* <Environment preset='city'/> */}
       
       {/* Scale the entire plant group */}

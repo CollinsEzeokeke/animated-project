@@ -5,7 +5,7 @@ import { Pot } from "./model";
 
 export default function HeroSection(){
   return (
-    <div className="min-h-screen flex items-center justify-between px-8 md:px-16 py-12 bg-gradient-to-br from-green-50 to-emerald-50 m-0">
+    <div className="min-h-screen flex items-center justify-between px-8 md:px-16 py-12 bg-gradient-to-br from-green-50 to-emerald-50 m-0" id="TriggerContainer">
       {/* Left Content */}
       <div className="w-full md:w-1/2 space-y-6 h-[70vh]">
         <motion.h1 
