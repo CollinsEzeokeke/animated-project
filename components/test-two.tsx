@@ -34,29 +34,7 @@ type GLTFResult = GLTF & {
 
 export function Plant(props: PlantProps) {
   const [scrollingPercent, setScrollPercent] = useState<number>(0);
-
-  //   const raycaster = new THREE.Raycaster();
-  // const pointer = new THREE.Vector2();
-
-  // function onPointerMove(event) {
-  //   pointer.x = (event.clientX / window.innerWidth) * 2 - 1;
-  //   pointer.y = -(event.clientY / window.innerHeight) * 2 + 1;
-  // }
-
-  // // Check for intersections
-  // function checkIntersection() {
-  //   raycaster.setFromCamera(pointer, camera);
-  //   const intersects = raycaster.intersectObjects(scene.children, true);
-
-  //   if (intersects.length > 0) {
-  //     const intersectedObject = intersects[0].object;
-  //     // Object is being interacted with
-  //     intersectedObject.material.color.set(0xff0000);
-  //   }
-  // }
-
   const groupRef = useRef<THREE.Group>(null);
-
   const mesh1Ref = useRef<THREE.Mesh>(null);
   const mesh2Ref = useRef<THREE.Mesh>(null);
   const mesh3Ref = useRef<THREE.Mesh>(null);
@@ -103,30 +81,42 @@ export function Plant(props: PlantProps) {
         timeline.fromTo(
           mesh8Ref.current.position,
           { opacity: 0, x: -0.4077, y: 1, z: 0.0125 },
-          { opacity: 1, x: -0.6569, y: 1.5746, z: 0.125, duration: 2.5, ease: "power1.in" }
+          {
+            opacity: 1,
+            x: -0.6569,
+            y: 1.5746,
+            z: 0.125,
+            duration: 2.5,
+            ease: "power1.in",
+          }
         );
       }
     }
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-        timeline.kill();
-      };
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      timeline.kill();
+    };
   }, []);
 
   useFrame(() => {
     if (!groupRef.current) return;
     if (!mesh8Ref.current) return;
-
     if (scrollingPercent > 10) {
       const group = groupRef.current;
-      // if ()
       group.rotation.y += 0.01;
       mesh8Ref.current.visible = true;
     }
   });
 
   console.log("this is my current postion", groupRef.current?.position);
+  console.log("");
+  console.log("");
+  console.log("");
   console.log("this is the scroll percent", scrollingPercent * 100);
+  console.log("");
+  console.log("");
+  console.log("");
+
   const { nodes, materials } = useGLTF("/result.gltf") as GLTFResult;
   return (
     <group {...props} dispose={null} ref={groupRef}>
